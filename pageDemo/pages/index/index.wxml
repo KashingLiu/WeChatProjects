@@ -1,0 +1,15 @@
+<!--index.wxml-->
+<view class="container">
+  <view bindtap='onTap1'>
+    <text class="user-motto">文章1</text>
+  </view>
+  <view bindtap='onTap2'>
+    <text class="user-motto">文章2</text>
+  </view>
+  <view bindtap='onTap3'>
+    <text class="user-motto">文章3</text>
+  </view>
+  <view bindtap='onTap4'>
+    <text class="user-motto">文章4</text>
+  </view>
+</view>
