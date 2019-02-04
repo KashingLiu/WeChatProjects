@@ -1,0 +1,7 @@
+<template name="footer1">
+footer1 -- {{text}}
+</template>
+
+<template name="footer2">
+footer2 -- {{text}}
+</template>

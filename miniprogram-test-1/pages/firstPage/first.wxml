@@ -1,0 +1,19 @@
+<include src="../template/test" />
+<text>demo</text>
+
+<button
+  type="warn"
+  bindtap='onTap'
+>
+  {{btntext}}
+</button>
+
+<view wx:for="{{array}}"
+  wx:for-item="wxitem"
+  wx:for-index="wxidx">
+{{wxidx}} - {{wxitem}}
+</view>
+
+<view bindtap="add">{{count}}</view>
+<import src="../template/footer" />
+<template is="footer2" data="{{text:'hell'}}"/>
