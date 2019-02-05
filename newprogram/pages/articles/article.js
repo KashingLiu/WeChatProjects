@@ -4,42 +4,42 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    id: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('index-onLoad')
+    this.setData({id:options.id})
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    console.log('index-onReady')
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log('index-onShow')
+    
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    console.log('index-onHide')
+    
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    console.log('index-onUnload')
+    
   },
 
   /**
@@ -61,15 +61,5 @@ Page({
    */
   onShareAppMessage: function () {
     
-  },
-
-  onTap1: function () {
-    // wx.navigateTo({
-    //   url: '../logs/logs',
-    // })
-
-    wx.redirectTo({
-      url: '../logs/logs',
-    })
   }
 })

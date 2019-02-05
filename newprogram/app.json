@@ -1,6 +1,10 @@
 {
   "pages":[
     "pages/test/test",
+    "pages/articles/article",
+    "pages/articles/article1",
+    "pages/articles/article2",
+    "pages/articles/article3",
     "pages/index/index",
     "pages/logs/logs"
   ],

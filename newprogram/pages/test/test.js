@@ -61,5 +61,23 @@ Page({
    */
   onShareAppMessage: function () {
     
+  },
+
+  article1: function () {
+    wx.navigateTo({
+      url: '../articles/article?id=1',
+    })
+  },
+
+  article2: function () {
+    wx.navigateTo({
+      url: '../articles/article?id=2',
+    })
+  },
+
+  article3: function () {
+    wx.navigateTo({
+      url: '../articles/article?id=3',
+    })
   }
 })
