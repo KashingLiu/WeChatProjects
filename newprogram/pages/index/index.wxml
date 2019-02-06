@@ -1,6 +1,11 @@
-<!--index.wxml-->
-<view class="container">
-  
-  this is index.
+<view bindtap='article1'>
+文章1
+</view>
 
+<view bindtap='article2'>
+文章2
+</view>
+
+<view bindtap='article3'>
+文章3
 </view>

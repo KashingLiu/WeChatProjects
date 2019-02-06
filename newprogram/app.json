@@ -1,11 +1,12 @@
 {
   "pages":[
-    "pages/test/test",
+    "pages/login/login",
+    "pages/index/index",
+    "pages/user/user",
     "pages/articles/article",
     "pages/articles/article1",
     "pages/articles/article2",
     "pages/articles/article3",
-    "pages/index/index",
     "pages/logs/logs"
   ],
   "window":{
@@ -20,19 +21,19 @@
     "color": "#707070",
     "list": [
       {
-        "pagePath": "pages/test/test",
+        "pagePath": "pages/index/index",
         "text": "广场",
         "iconPath": "icon/index_un.png",
         "selectedIconPath": "icon/index_active.png"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/logs/logs",
         "text": "发布",
         "iconPath": "icon/broad_un.png",
         "selectedIconPath": "icon/broad_active.png"
       },
       {
-        "pagePath": "pages/logs/logs",
+        "pagePath": "pages/user/user",
         "text": "我的",
         "iconPath": "icon/mine_un.png",
         "selectedIconPath": "icon/mine_active.png"

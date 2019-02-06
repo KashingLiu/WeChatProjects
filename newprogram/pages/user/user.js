@@ -1,7 +1,8 @@
+// pages/user/user.js
+var app = getApp()
 Page({
-
   /**
-   * 页面的初始数据
+   * 页面的初始数据 
    */
   data: {
 
@@ -11,7 +12,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if(app.myData.userInfo == null) {
+      wx.redirectTo({
+        url: '../login/login',
+        success: function(res) {},
+        fail: function(res) {},
+        complete: function(res) {},
+      })
+    }
   },
 
   /**
@@ -61,23 +69,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
-  article1: function () {
-    wx.navigateTo({
-      url: '../articles/article?id=1',
-    })
-  },
-
-  article2: function () {
-    wx.navigateTo({
-      url: '../articles/article?id=2',
-    })
-  },
-
-  article3: function () {
-    wx.navigateTo({
-      url: '../articles/article?id=3',
-    })
   }
 })

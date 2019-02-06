@@ -1,0 +1,28 @@
+page{
+  height: 100%;
+}
+.container{
+  height: 100%;
+  width: 100%;
+  background-color: yellow;
+  display: flex;
+  /* position: absolute;
+  left: 200rpx;
+  top: 200rpx; */
+}
+.item{
+  border: 1px solid white;
+  width: 170rpx;
+  height: 170rpx;
+  background-color: purple;
+  
+}
+.item3{
+  border: 1px solid white;
+  width: 170rpx;
+  height: 170rpx;
+  background-color: purple;
+  position: absolute;
+  left: 50rpx;
+  top: 50rpx;
+}

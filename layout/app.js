@@ -33,12 +33,7 @@ App({
       }
     })
   },
-
-  myData : {
-    userInfo: null
-  },
-
   globalData: {
-    // userInfo: null
+    userInfo: null
   }
 })
