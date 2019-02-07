@@ -1,0 +1,11 @@
+/* .page{
+  display: flex;
+
+}
+.radio {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #ddd;
+    padding: 5px;
+    width: 200rpx;
+} */

@@ -1,0 +1,18 @@
+{
+	"client": "client/",
+	"svr": "server/",
+	"miniprogramRoot": "client/",
+	"qcloudRoot": "server/",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false
+	},
+	"appid": "wx0a897809c58f2c45",
+	"projectname": "lostfound",
+	"libVersion": "2.5.2",
+	"condition": {}
+}

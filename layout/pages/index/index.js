@@ -54,17 +54,18 @@ Page({
   },
 
   formSubmit: function(e) {
-    wx.request({
-      url: 'http://localhost/wechattest/test.php', 
-      data: {
-        x: e.detail.value
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        console.log(res.data)
-      }
-    })
+    console.log(e)
+    // wx.request({
+    //   url: 'http://localhost/wechattest/test.php', 
+    //   data: {
+    //     x: e.detail.value
+    //   },
+    //   header: {
+    //     'content-type': 'application/json' // 默认值
+    //   },
+    //   success(res) {
+    //     console.log(res.data)
+    //   }
+    // })
   }
 })
