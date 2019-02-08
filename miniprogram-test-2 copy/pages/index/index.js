@@ -6,39 +6,50 @@ Page({
    */
   data: {
     page: 1,
-    currentList: [],
+    currentList: [
+      {
+        img: "/images/ava.png",
+        is_live: 1,
+        city: "天津",
+        nickname: "test"
+      },
+      {
+        img: "/images/ava.png",
+        is_live: 1,
+        city: "长春",
+        nickname: "test"
+      },
+      {
+        img: "/images/ava.png",
+        is_live: 1,
+        city: "威海",
+        nickname: "test"
+      },
+      {
+        img: "/images/ava.png",
+        is_live: 1,
+        city: "天津",
+        nickname: "test"
+      },
+      {
+        img: "/images/ava.png",
+        is_live: 1,
+        city: "天津",
+        nickname: "test"
+      }],
+    selectedType: 'hotList',
     hidden: true,
+    url: 'https://www.51aso.cn/live/hot?',//热门主播地址
     scrollHeight: 0,
     time: 0,
     isNone: false
-  },
-
-  detailTap: function (e) {
-    console.log(e.currentTarget.dataset.anchorobj)
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var self = this;
-    wx.request({
-      url: 'http://192.168.0.106/wechattest/test.php?api_num=1',
-      data: {
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        console.log(res)
-        self.setData({
-          currentList: res.data,
-        })
-        //TO DO
 
-
-      }
-    })
   },
 
   /**

@@ -1,13 +1,12 @@
 @import "anchorTemplate/anchor.wxss";
 page{
   background-color: #F8F8F8;
-  /* background-color: black; */
 }
 
 .container {
   display:flex;
   flex-direction: column;
-  /* margin: 0 30rpx; */
+  margin: 0 30rpx;
   padding: 0;
 }
 .top {

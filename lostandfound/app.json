@@ -1,8 +1,8 @@
 {
   "pages":[
-    "pages/create/general_create/general_create",
     "pages/index/index",
     "pages/create/create",
+    "pages/create/general_create/general_create",
     "pages/create/card_create/card_create",
     "pages/user/user",
     "pages/login/login",

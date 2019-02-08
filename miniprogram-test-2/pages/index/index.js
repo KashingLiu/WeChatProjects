@@ -6,7 +6,49 @@ Page({
    */
   data: {
     page: 1,
-    currentList: [],
+    currentList: [
+      {
+        id: 12,
+        img: "http://www.runoob.com/try/demo_source/paris.jpg",
+        name: '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊',
+        type: "失物招领",
+        time: "10-15 09:07"
+      },
+      {
+        id: 13,
+        img: "/images/ava.png",
+        name: 1,
+        type: "寻物启事",
+        time: "test"
+      },
+      {
+        id: 14,
+        img: "/images/ava.png",
+        name: 1,
+        type: "寻物启事",
+        time: "test"
+      },
+      {
+        id: 15,
+        img: "/images/ava.png",
+        name: 1,
+        type: "失物招领",
+        time: "test"
+      },
+      {
+        id: 16,
+        img: "/images/ava.png",
+        name: 1,
+        type: "寻物启事",
+        time: "test"
+      },
+      {
+        id: 17,
+        img: "/images/ava.png",
+        name: 1,
+        type: "寻物启事",
+        time: "test"
+      }],
     hidden: true,
     scrollHeight: 0,
     time: 0,
@@ -21,24 +63,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var self = this;
-    wx.request({
-      url: 'http://192.168.0.106/wechattest/test.php?api_num=1',
-      data: {
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        console.log(res)
-        self.setData({
-          currentList: res.data,
-        })
-        //TO DO
 
-
-      }
-    })
   },
 
   /**
