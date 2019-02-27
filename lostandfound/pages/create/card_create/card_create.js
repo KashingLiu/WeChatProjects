@@ -16,26 +16,80 @@ Page({
     })
   },
   bindsubmit: function (e) {
-    wx.request({
-      url: 'http://192.168.0.106/wechattest/test.php?api_num=0',
-      data: {
-        generalsubmit: 0,
-        stuff_name: e.detail.value.cardname,
-        detail: this.data.major[this.data.majorIndex],
-        card_number: e.detail.value.cardid,
-        input_phone: e.detail.value.input_phone,
-        input_qq: e.detail.value.input_qq,
-        input_place: e.detail.value.input_place
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        console.log(res.data)
-        //TO DO
-      }
-    })
-    console.log(e)
+    let self = this;
+    var item = e.detail.value;
+    if (item.cardid=='') {
+      wx.showToast({
+        title: '请输入丢卡人学号',
+        icon: 'none',
+        duration: 1500,
+        mask: false,
+      })
+    } else if(item.cardname=='') {
+      wx.showToast({
+        title: '请输入丢卡人姓名',
+        icon: 'none',
+        duration: 1500,
+        mask: false,
+      })
+    } else if(item.input_phone==''&&item.input_place==''&&item.input_qq=='') {
+      wx.showToast({
+        title: '请至少输入一种联系方式',
+        icon: 'none',
+        duration: 1500,
+        mask: false,
+      })
+    } else {
+      wx.request({
+        url: 'http://10.236.78.197/wechattest/insert_stuff.php',
+        data: {
+          generalsubmit: 0,
+          stuff_name: e.detail.value.cardname,
+          detail: this.data.major[this.data.majorIndex],
+          card_number: e.detail.value.cardid,
+          input_phone: e.detail.value.input_phone,
+          input_qq: e.detail.value.input_qq,
+          input_place: e.detail.value.input_place,
+          openid: getApp().globalData.openid
+        },
+        header: {
+          'content-type': 'application/json' // 默认值
+        },
+        success(res) {
+          console.log(res.data)
+
+
+          console.log(e.detail.value)
+
+          var contacts = {};
+          contacts.qq = e.detail.value.input_qq;
+          contacts.phone = e.detail.value.input_phone;
+          contacts.place = e.detail.value.input_place;
+          contacts.detail = "学号：" + e.detail.value.cardid + " 、院系：" + self.data.major[self.data.majorIndex];
+          console.log(contacts);
+
+          var detail = {};
+          detail.id = res.data.id;
+          detail.name = e.detail.value.stuff_name
+          detail.time = res.data.time;
+          (self.data.select == 1) ? detail.type = "失物招领" : detail.type = "寻物启事";
+          console.log(detail);
+
+          var put = {}
+          put.detail = detail
+          put.contacts = contacts
+          put.display = false
+          let str = JSON.stringify(put)
+          //TO DO
+          wx.navigateTo({
+            url: '/pages/show/show?check=1&put=' + str,
+          })
+          //TO DO
+        }
+      })
+      console.log(e)
+    }
+
   },
 
   /**

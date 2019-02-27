@@ -1,12 +1,14 @@
 // pages/create/create.js
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    img_src: "../../icon/create/button.png",
-    style: 'width: 200rpx; height: 200rpx;'
+    img_src1: "../../icon/create/general.jpg",
+    img_src2: "../../icon/create/card.jpg",
+    style: 'width: 290rpx; height: 290rpx;'
   },
 
   /**
@@ -66,20 +68,32 @@ Page({
   },
 
   general_create: function () {
-    wx.navigateTo({
-      url: 'general_create/general_create',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
+    if (getApp().globalData.userInfo == null || getApp().globalData.openid == null) {
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+    } else {
+      wx.navigateTo({
+        url: 'general_create/general_create',
+        success: function (res) { },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
+    }
   },
 
   card_create: function () {
-    wx.navigateTo({
-      url: 'card_create/card_create',
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { },
-    })
+    if (getApp().globalData.userInfo == null || getApp().globalData.openid == null) {
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+    } else {
+      wx.navigateTo({
+        url: 'card_create/card_create',
+        success: function (res) { },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
+    }
   },
 })

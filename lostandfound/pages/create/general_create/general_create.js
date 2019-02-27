@@ -67,7 +67,7 @@ Page({
       this.generalsubmit(e);
     } else {
       var data = {
-        url: 'http://192.168.0.106/wechattest/uploadimg.php',//这里是你图片上传的接口
+        url: 'http://10.236.78.197/wechattest/uploadimg.php',//这里是你图片上传的接口
         path: pics,//这里是选取的图片的地址数组
         e:e
       }
@@ -134,8 +134,9 @@ Page({
   generalsubmit: function (e) {
     // console.log('submit')
     // console.log(result)
+    let self = this;
     wx.request({
-      url: 'http://192.168.0.106/wechattest/test.php?api_num=0',
+      url: 'http://10.236.78.197/wechattest/insert_stuff.php',
       data: {
         generalsubmit: 1,
         stuff_name: e.detail.value.stuff_name,
@@ -144,16 +145,55 @@ Page({
         input_qq: e.detail.value.input_qq,
         input_place: e.detail.value.input_place,
         lostorfound: this.data.select,
-        filepath: result
+        filepath: result,
+        openid: getApp().globalData.openid
       },
       header: {
         'content-type': 'application/json' // 默认值
       },
       success(res) {
-        console.log(res.data)
-        result = new Array()
-        //TO DO
+        console.log(res.data.id)
 
+        console.log(e.detail.value)
+        var initarray = new Array()
+        for (var i = 0; i< result.length; i++){
+          initarray.push('http://10.236.78.197/wechattest/uploadimg/' + result[i]);
+        }
+        console.log(initarray)
+        var display = true;
+
+        if( result.length == 0) {
+          display = false
+        }
+        var contacts = {};
+        contacts.qq = e.detail.value.input_qq;
+        contacts.phone = e.detail.value.input_phone;
+        contacts.place = e.detail.value.input_place;
+        contacts.detail = self.data.text_area;
+        console.log(contacts);
+
+        var detail = {};
+        detail.id = res.data.id;
+        detail.name = e.detail.value.stuff_name
+        detail.time = res.data.time;
+        (self.data.select == 1) ? detail.type = "失物招领" : detail.type = "寻物启事";
+        detail.img = initarray;
+        console.log(detail);
+
+console.log(display);
+        var put = {}
+        put.detail = detail
+        put.contacts = contacts
+        put.display = display
+        let str = JSON.stringify(put)
+
+
+
+        //TO DO
+        result = new Array()
+        wx.navigateTo({
+          url: '/pages/show/show?check=1&put=' + str,
+        })
 
       }
     })

@@ -15,10 +15,10 @@ page{
 
 .item1{
   position: absolute;
-  top: 280rpx;
+  top: 200rpx;
 }
 
 .item2{
   position: absolute;
-  bottom: 280rpx;
+  bottom: 200rpx;
 }

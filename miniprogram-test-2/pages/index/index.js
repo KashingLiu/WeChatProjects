@@ -13,41 +13,6 @@ Page({
         name: '啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊',
         type: "失物招领",
         time: "10-15 09:07"
-      },
-      {
-        id: 13,
-        img: "/images/ava.png",
-        name: 1,
-        type: "寻物启事",
-        time: "test"
-      },
-      {
-        id: 14,
-        img: "/images/ava.png",
-        name: 1,
-        type: "寻物启事",
-        time: "test"
-      },
-      {
-        id: 15,
-        img: "/images/ava.png",
-        name: 1,
-        type: "失物招领",
-        time: "test"
-      },
-      {
-        id: 16,
-        img: "/images/ava.png",
-        name: 1,
-        type: "寻物启事",
-        time: "test"
-      },
-      {
-        id: 17,
-        img: "/images/ava.png",
-        name: 1,
-        type: "寻物启事",
-        time: "test"
       }],
     hidden: true,
     scrollHeight: 0,

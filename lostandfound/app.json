@@ -1,10 +1,15 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/stuverify/stuverify",
+    "pages/user/user",
+    "pages/my_stuff/my_stuff",
+    "pages/filter/filter",
     "pages/create/create",
+    "pages/search/search",
     "pages/create/general_create/general_create",
     "pages/create/card_create/card_create",
-    "pages/user/user",
+    "pages/show/show",
     "pages/login/login",
     "pages/logs/logs"
   ],

@@ -72,6 +72,7 @@ App({
     });
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    openid: ""
   }
 })

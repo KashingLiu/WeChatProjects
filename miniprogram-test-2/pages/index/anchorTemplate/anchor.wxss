@@ -3,8 +3,8 @@
   flex-direction: column;
   color: #c6c6c6;
   font-size:20rpx;
-  width:50%;
-  height: 450rpx;
+  width:100%;
+  height: 300rpx;
 }
 .eachitem {
   margin-left: 11rpx;
@@ -13,7 +13,7 @@
   margin-bottom: 8rpx;
 }
 .eachitem .ava {
-   width: 100%;
+   width: 300rpx;
    height: 300rpx;
    overflow:hidden;
    position: relative; 
@@ -21,8 +21,8 @@
 .eachitem .ava .postImg {
    width: 100%;
    height: 300rpx;
-   border-top-left-radius: 19rpx;
-   border-top-right-radius: 19rpx;
+   /* border-top-left-radius: 19rpx;
+   border-top-right-radius: 19rpx; */
 }
 .eachitem .ava .lost {
    font-size: 22rpx;
@@ -32,7 +32,7 @@
    bottom: 0;
    left: 0;
    padding: 6rpx 16rpx;
-   border-radius: 0 30rpx 0 0;
+   /* border-radius: 0 30rpx 0 0; */
 }
 .eachitem .ava .found {
    font-size: 22rpx;
@@ -42,19 +42,21 @@
    bottom: 0;
    left: 0;
    padding: 6rpx 16rpx;
-   border-radius: 0 30rpx 0 0;
+   /* border-radius: 0 30rpx 0 0; */
 }
 .eachitem .info {
-   width: 100%;
-   height: 135rpx;
+   width: 432rpx;
+   height: 300rpx;
    overflow:hidden;
    position: relative; 
+   top: -300rpx;
+   left: 300rpx;
 }
 .eachitem .info .underground{
-  height: 135rpx;
+  height: 300rpx;
   width: 100%;
-  border-bottom-left-radius: 19rpx;
-  border-bottom-right-radius: 19rpx;
+  /* border-bottom-left-radius: 19rpx; */
+  /* border-bottom-right-radius: 19rpx; */
 }
 .eachitem .info .stuff {
   font-size: 30rpx;

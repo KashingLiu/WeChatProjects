@@ -1,0 +1,11 @@
+{
+	"miniprogramRoot": "miniprogram/",
+	"pluginRoot": "plugin/",
+	"compileType": "plugin",
+	"setting": {
+		"newFeature": true
+	},
+	"appid": "wx019c89bc9836aac1",
+	"projectname": "loginAndGetUserInfo%20%E7%A4%BA%E4%BE%8B",
+	"condition": {}
+}

@@ -1,7 +1,7 @@
 @import "anchorTemplate/anchor.wxss";
 page{
-  background-color: #F8F8F8;
-  /* background-color: black; */
+  /* background-color: #F8F8F8; */
+  background-color: black;
 }
 
 .container {

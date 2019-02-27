@@ -12,7 +12,7 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.5.2",
+	"libVersion": "2.6.0",
 	"appid": "wx0a897809c58f2c45",
 	"projectname": "lostandfound",
 	"debugOptions": {

@@ -1,58 +1,161 @@
-// pages/index/index.js
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-    page: 1,
     currentList: [],
-    hidden: true,
-    scrollHeight: 0,
     time: 0,
-    isNone: false
+    isNone: false,
+    loading: false,
+    inputShowed: false,
+    inputVal: ""
+  }, 
+
+  showInput: function () {
+    this.setData({
+      inputShowed: true
+    });
   },
 
+  hideInput: function () {
+    this.setData({
+      inputVal: "",
+      inputShowed: false
+    });
+  },
+
+  search: function (e) {
+    wx.navigateTo({
+      url: '/pages/search/search?query=' + this.data.inputVal,
+    })
+  },
+  
+  inputTyping: function (e) {
+    this.setData({
+      inputVal: e.detail.value
+    });
+  },
+  
   detailTap: function (e) {
-    console.log(e.currentTarget.dataset.anchorobj)
+    var detail = e.currentTarget.dataset.anchorobj
+    console.log(detail)
+    if(detail.ifidcard == 1||detail.img[0] == "/images/ava.png") {
+      detail.display = false
+    } else {
+      detail.display = true
+    }
+
+    let str = JSON.stringify(detail)
+    wx.navigateTo({
+      url: '/pages/show/show?check=0&obj=' + str,
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  onPullDownRefresh: function () {
+    this.setData({
+      loading: true
+    })
+    console.log('hello')
     var self = this;
     wx.request({
-      url: 'http://192.168.0.106/wechattest/test.php?api_num=1',
+      url: 'http://10.236.78.197/wechattest/show_index.php?load=0',
       data: {
       },
       header: {
         'content-type': 'application/json' // 默认值
       },
       success(res) {
-        console.log(res)
+        // console.log(res)
+        wx.stopPullDownRefresh()
+        console.log("finish")
         self.setData({
           currentList: res.data,
+          loading: false
         })
-        //TO DO
-
-
+        
       }
     })
+  },
+
+  onReachBottom: function () {
+    var latestid = this.data.currentList[9].id
+    var self = this;
+    wx.request({
+      url: 'http://10.236.78.197/wechattest/show_index.php?load=1&id=' + latestid,
+      data: {
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        // console.log(res)
+        var result = self.data.currentList
+        for (var i = 0; i < res.data.length; i++){
+          result.push(res.data[i])
+        }
+        self.setData({
+          currentList: result,
+        })
+      }
+    })
+  },
+
+  filter_time: function (e) {
+    var time = e.currentTarget.dataset.time
+    switch(time) {
+      case 'today':
+        wx.navigateTo({
+          url: '/pages/filter/filter?time=0',
+        })
+      break;
+      case 'yesterday':
+        wx.navigateTo({
+          url: '/pages/filter/filter?time=1',
+        })
+      break;
+      case 'week':
+        wx.navigateTo({
+          url: '/pages/filter/filter?time=2',
+        })
+      break;
+      case 'ago':
+        wx.navigateTo({
+          url: '/pages/filter/filter?time=3',
+        })
+      break;
+    }
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var self = this;
+    wx.request({
+      url: 'http://10.236.78.197/wechattest/show_index.php?load=0',
+      data: {
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        // console.log(res)
+        self.setData({
+          currentList: res.data,
+        })
 
+      }
+    })
   },
 
   /**
@@ -66,20 +169,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
 
   },
 

@@ -2,6 +2,7 @@
 @import 'weui.wxss';
 page{
   background-color: #F8F8F8;
+  /* background-color: black; */
 }
 .page__hd {
     padding: 40px;
