@@ -6,7 +6,8 @@ Page({
    */
   data: {
     inputShowed: false,
-    inputVal: ""
+    inputVal: "",
+    hide: true
   },
 
   showInput: function () {
@@ -25,7 +26,7 @@ Page({
   search: function (e) {
     var self = this;
     wx.request({
-      url: 'http://10.236.78.197/wechattest/make_currentlist.php?query=' + this.data.inputVal,
+      url: 'https://www.kashingliu.cn/wechattest/make_currentlist.php?query=' + this.data.inputVal,
       data: {
 
       },
@@ -44,7 +45,7 @@ Page({
 
   detailTap: function (e) {
     var detail = e.currentTarget.dataset.anchorobj
-    if (detail.ifidcard == 1 || detail.img[0] == "/images/ava.png") {
+    if (detail.ifidcard == 1 || detail[0].img[0] == "/images/ava.png" || detail[0].img[0] == "/images/lost.png") {
       detail.display = false
     } else {
       detail.display = true
@@ -66,8 +67,16 @@ Page({
   onLoad: function (options) {
     console.log(options.query)
     var self = this;
+    wx.showLoading({
+      title: '加载中',
+      success(res) {
+        self.setData({
+          hide: true
+        })
+      }
+    })
     wx.request({
-      url: 'http://10.236.78.197/wechattest/make_currentlist.php?query=' + options.query,
+      url: 'https://www.kashingliu.cn/wechattest/make_currentlist.php?query=' + options.query,
       data: {
 
       },
@@ -95,7 +104,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var self = this
+    setTimeout(function () {
+      wx.hideLoading()
+      self.setData({
+        hide: false
+      })
+    }, 2000)
   },
 
   /**

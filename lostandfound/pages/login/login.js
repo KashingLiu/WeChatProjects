@@ -56,7 +56,7 @@ Page({
           // 或者可以直接使用微信的提供的接口直接获取 openid ，方法如下：
           wx.request({
             // 自行补上自己的 APPID 和 SECRET
-            url: 'http://10.236.78.197/wechattest/insert_userinfo.php?code=' + res.code,
+            url: 'https://www.kashingliu.cn/wechattest/insert_userinfo.php?code=' + res.code,
             data: {
               nickName: getApp().globalData.userInfo.nickName,
               avatarUrl: getApp().globalData.userInfo.avatarUrl

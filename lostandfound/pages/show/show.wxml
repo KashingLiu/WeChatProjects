@@ -1,4 +1,4 @@
-<view class="page">
+<view wx:if='{{!hide}}' class="page">
   <view class="page__bd">
 
 
@@ -19,13 +19,10 @@
 
     <view class="weui-cells__title">联系方式</view>
     <view class="weui-panel" style='margin-top:0;'>
-
-
-
-      <view wx:if="{{haslocation}}">
+      <view>
 
         <view class='weui-panel__hd' style='padding:0;font-size=17px;color:black;'>
-          <view class="weui-cell weui-cell_access" style='padding-bottom:8px;'>
+          <view wx:if="{{haslocation}}" class="weui-cell weui-cell_access" style='padding-bottom:8px;'>
             <image src="{{placeicon}}" style="width: 20px;height: 20px;margin-right: 5px" />
             <view class="weui-cell__hd weui-cell_primary">
                 <view style='font-size:17px;'>{{contacts.place}}</view>
@@ -34,11 +31,11 @@
           </view>
         </view>
 
-        <view class="weui-panel__bd">
+        <view class="weui-panel__bd" style="border-top:{{hasborder}}">
           <view class="weui-media-box weui-media-box_small-appmsg">
             <view class="weui-cells weui-cells_in-small-appmsg">
 
-              <view class="weui-cell weuis-cell_access">
+              <view wx:if="{{hasqq}}" class="weui-cell weuis-cell_access">
                 <image src="{{qqicon}}" style="width: 20px;height: 20px;margin-right: 5px" />
                 <view class="weui-cell__bd weui-cell_primary">
                     <view>{{contacts.qq}}</view>
@@ -46,7 +43,7 @@
                 <!-- <view class="weui-cell__ft weui-cell__ft_in-access"></view> -->
               </view>
 
-              <view class="weui-cell weui-cell_access">
+              <view wx:if="{{hasphone}}" class="weui-cell weui-cell_access">
                 <image src="{{phoneicon}}" style="width: 20px;height: 20px;margin-right: 5px" />
                 <view class="weui-cell__bd weui-cell_primary">
                     <view>{{contacts.phone}}</view>
@@ -57,41 +54,25 @@
             </view>
           </view>
         </view>
-      </view>
-
-
-      <view wx:else>
-
-        <view class='weui-panel__hd' style='padding:0;font-size=17px;color:black;'>
-          <view class="weui-cell weui-cell_access" style='padding-bottom:8px;'>
-            <image src="{{qqicon}}" style="width: 20px;height: 20px;margin-right: 5px" />
-            <view class="weui-cell__hd weui-cell_primary">
-                <view style='font-size:17px;'>{{contacts.qq}}</view>
-            </view>
-            <!-- <view class="weui-cell__ft weui-cell__ft_in-access"></view> -->
-          </view>
-        </view>
-
-        <view class="weui-panel__bd">
-          <view class="weui-media-box weui-media-box_small-appmsg">
-            <view class="weui-cells weui-cells_in-small-appmsg">
-
-              
-
-              <view class="weui-cell weui-cell_access">
-                <image src="{{phoneicon}}" style="width: 20px;height: 20px;margin-right: 5px" />
-                <view class="weui-cell__bd weui-cell_primary">
-                    <view>{{contacts.phone}}</view>
-                </view>
-                <!-- <view class="weui-cell__ft weui-cell__ft_in-access"></view> -->
-              </view>
-
-            </view>
-          </view>
-        </view>
-
       </view>
     </view>
+    <button 
+      class="weui-btn sharebutton" 
+      type="primary" 
+      style='background-color:#f96159;{{hassharebutton}}' 
+      hover-class='none'
+      bindtap='showDialog'
+    >
+      <view style='height: 70rpx; display: flex;align-items: center;justify-content: center;'>
+        <image 
+          src='/icon/spread.png' 
+          style='width:35rpx;height:35rpx;'
+        />
+        <text class='sharetext'>分享</text>
+      </view>
+    </button>
+
+
 
     <view wx:if="{{display}}">
       <view wx:for="{{detail.img}}" class='image' wx:key="{{detail.img}}">
@@ -100,3 +81,12 @@
     </view>
   </view>
 </view>
+<modal id='modal' 
+    modalTitle='这里是标题' 
+    modalMsg='我是内容' 
+    bind:cancelEvent="_cancelEvent" 
+    bind:bull="_bull"
+    bind:preventtap="_preventtap"  
+    bind:confirmEvent="_confirmEvent"
+    bind:makephoto="_makephoto">
+</modal>

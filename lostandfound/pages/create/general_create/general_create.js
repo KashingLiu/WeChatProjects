@@ -8,8 +8,8 @@ Page({
    */
   data: {
     items: [
-      { name: 'find', value: '失物招领', checked: 'true' },
-      { name: 'lost', value: '寻物启事'},
+      { name: 'find', value: '招领', checked: 'true' },
+      { name: 'lost', value: '启事'},
     ],
     files: [],
     select: true,
@@ -61,17 +61,33 @@ Page({
 
 
   up_img: function (e) {
-    var pics = this.data.files;
-
-    if (pics.length === 0) {
-      this.generalsubmit(e);
+    var content = e.detail.value
+    if (content.stuff_name == "") {
+      wx.showToast({
+        title: '请输入物品名称',
+        icon: 'none',
+        duration: 1500,
+        mask: false,
+      })
+    } else if (content.input_phone == "" && content.input_qq == "") {
+      wx.showToast({
+        title: '请至少输入一种联系方式',
+        icon: 'none',
+        duration: 1500,
+        mask: false,
+      })
     } else {
-      var data = {
-        url: 'http://10.236.78.197/wechattest/uploadimg.php',//这里是你图片上传的接口
-        path: pics,//这里是选取的图片的地址数组
-        e:e
+      var pics = this.data.files;
+      if (pics.length === 0) {
+        this.generalsubmit(e);
+      } else {
+        var data = {
+          url: 'https://www.kashingliu.cn/wechattest/uploadimg.php',//这里是你图片上传的接口
+          path: pics,//这里是选取的图片的地址数组
+          e:e
+        }
+        this.uploadimg(data);
       }
-      this.uploadimg(data);
     }
   },
 
@@ -136,7 +152,7 @@ Page({
     // console.log(result)
     let self = this;
     wx.request({
-      url: 'http://10.236.78.197/wechattest/insert_stuff.php',
+      url: 'https://www.kashingliu.cn/wechattest/insert_stuff.php',
       data: {
         generalsubmit: 1,
         stuff_name: e.detail.value.stuff_name,
@@ -157,7 +173,7 @@ Page({
         console.log(e.detail.value)
         var initarray = new Array()
         for (var i = 0; i< result.length; i++){
-          initarray.push('http://10.236.78.197/wechattest/uploadimg/' + result[i]);
+          initarray.push('https://www.kashingliu.cn/wechattest/uploadimg/' + result[i]);
         }
         console.log(initarray)
         var display = true;
@@ -180,7 +196,7 @@ Page({
         detail.img = initarray;
         console.log(detail);
 
-console.log(display);
+        console.log(display);
         var put = {}
         put.detail = detail
         put.contacts = contacts

@@ -41,7 +41,7 @@ Page({
       })
     } else {
       wx.request({
-        url: 'http://10.236.78.197/wechattest/insert_stuff.php',
+        url: 'https://www.kashingliu.cn/wechattest/insert_stuff.php',
         data: {
           generalsubmit: 0,
           stuff_name: e.detail.value.cardname,

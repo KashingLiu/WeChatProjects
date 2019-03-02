@@ -7,7 +7,9 @@
     </view>
     <view class="info">
       <image src='/images/white.png' class='underground'></image>
-      <text class="time">{{item.time}}</text>
+      <!-- <text class="time">{{item.time}}</text> -->
+      <button type='primary' data-id="{{item.id}}" class='ok' catchtap='ok'>已交接</button>
+      <button type='warn' data-id="{{item.id}}" class='del' catchtap='del'>删除</button>
       <text class="stuff">{{item.name}}</text>
     </view>
   </view>

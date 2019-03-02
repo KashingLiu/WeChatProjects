@@ -1,6 +1,6 @@
 <import src="/pages/index/anchorTemplate/anchor.wxml"/>
 
-<view class="container">
+<view wx:if="{{!hide}}" class="container">
 
     <view class='list1' >
 

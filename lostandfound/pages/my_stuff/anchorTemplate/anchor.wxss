@@ -3,8 +3,8 @@
   flex-direction: column;
   color: #c6c6c6;
   font-size:20rpx;
-  width:100%;
-  height: 300rpx;
+  width:50%;
+  height: 505rpx;
 }
 .eachitem {
   margin-left: 11rpx;
@@ -13,48 +13,49 @@
   margin-bottom: 8rpx;
 }
 .eachitem .ava {
-   width: 300rpx;
-   height: 300rpx;
+   width: 100%;
+   height: 355rpx;
    overflow:hidden;
    position: relative; 
 }
 .eachitem .ava .postImg {
    width: 100%;
-   height: 300rpx;
-   /* border-top-left-radius: 19rpx;
-   border-top-right-radius: 19rpx; */
+   height: 100%;
+   border-top-left-radius: 19rpx;
+   border-top-right-radius: 19rpx;
 }
 .eachitem .ava .lost {
-   font-size: 22rpx;
+   font-size: 28rpx;
    color: #fff;
    background: #f96159;
    position: absolute;
    bottom: 0;
    left: 0;
-   padding: 6rpx 16rpx;
-   /* border-radius: 0 30rpx 0 0; */
+   padding: 3rpx 8rpx;
+   border-radius: 0 20rpx 0 0;
 }
 .eachitem .ava .found {
-   font-size: 22rpx;
+   font-size: 28rpx;
    color: #fff;
    background: #ffd900;
    position: absolute;
    bottom: 0;
    left: 0;
-   padding: 6rpx 16rpx;
-   /* border-radius: 0 30rpx 0 0; */
+   padding: 3rpx 8rpx;
+   border-radius: 0 20rpx 0 0;
 }
+
 .eachitem .info {
-   width: 432rpx;
-   height: 300rpx;
+   width: 100%;
+   height: 135rpx;
    overflow:hidden;
    position: relative; 
-   top: -300rpx;
-   left: 300rpx;
 }
 .eachitem .info .underground{
-  height: 300rpx;
+  height: 135rpx;
   width: 100%;
+  border-bottom-left-radius: 19rpx;
+  border-bottom-right-radius: 19rpx;
 }
 .eachitem .info .stuff {
   font-size: 30rpx;
@@ -64,7 +65,9 @@
    position: absolute;
    top: 5rpx;
    left: 0;
-   padding: 6rpx 14rpx;
+   padding-left: 5rpx;
+   padding-right: 5rpx;
+   /* padding: 6rpx 14rpx; */
 }
 .eachitem .info .time {
   font-size: 28rpx;
@@ -73,6 +76,30 @@
    bottom: 5rpx;
    right: 2rpx;
    padding: 6rpx 14rpx;
+}
+.eachitem .info .ok {
+  font-size: 13px;
+  position: absolute;
+  bottom: 6px;
+  right: 10px;
+  height: 30px;
+  width: 150rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.eachitem .info .del {
+  font-size: 13px;
+  position: absolute;
+  bottom: 6px;
+  left: 10px;
+  height: 30px;
+  width: 150rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .lbs {
   display:flex;

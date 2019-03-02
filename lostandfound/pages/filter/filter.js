@@ -6,7 +6,8 @@ Page({
    */
   data: {
     currentList: [],
-    isNone: true
+    isNone: true,
+    hide: true
   },
 
   /**
@@ -15,8 +16,16 @@ Page({
   onLoad: function (options){
     console.log(options.time)
     var self = this;
+    wx.showLoading({
+      title: '加载中',
+      success(res) {
+        self.setData({
+          hide: true
+        })
+      }
+    })
     wx.request({
-      url: 'http://10.236.78.197/wechattest/filter.php?timestamp='+options.time,
+      url: 'https://www.kashingliu.cn/wechattest/filter.php?timestamp='+options.time,
       data: {
 
       },
@@ -38,6 +47,19 @@ Page({
     })
   },
 
+  detailTap: function (e) {
+    var detail = e.currentTarget.dataset.anchorobj
+    if (detail.ifidcard == 1 || detail.img[0] == "/images/ava.png" || detail.img[0] == "/images/lost.png") {
+      detail.display = false
+    } else {
+      detail.display = true
+    }
+    let str = JSON.stringify(detail)
+    wx.navigateTo({
+      url: '/pages/show/show?check=0&obj=' + str,
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -49,6 +71,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var self = this
+    setTimeout(function () {
+      wx.hideLoading()
+      self.setData({
+        hide: false
+      })
+    }, 2000)
 
   },
 

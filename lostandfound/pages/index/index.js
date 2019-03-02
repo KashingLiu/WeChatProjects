@@ -9,6 +9,22 @@ Page({
     inputVal: ""
   }, 
 
+  test: function() {
+    wx.login({
+      success: res => {
+        // 获取到用户的 code 之后：res.code
+        console.log("用户的code:" + res.code);
+        wx.request({
+          // 自行补上自己的 APPID 和 SECRET
+          url: 'https://www.kashingliu.cn/wechattest/send_message.php?code=' + res.code,
+          success: res => {
+            console.log(res)      //ok
+          }
+        })
+      }
+    })
+  },
+
   showInput: function () {
     this.setData({
       inputShowed: true
@@ -37,7 +53,7 @@ Page({
   detailTap: function (e) {
     var detail = e.currentTarget.dataset.anchorobj
     console.log(detail)
-    if(detail.ifidcard == 1||detail.img[0] == "/images/ava.png") {
+    if (detail.ifidcard == 1 || detail.img[0] == "/images/ava.png" || detail.img[0] == "/images/lost.png") {
       detail.display = false
     } else {
       detail.display = true
@@ -56,7 +72,7 @@ Page({
     console.log('hello')
     var self = this;
     wx.request({
-      url: 'http://10.236.78.197/wechattest/show_index.php?load=0',
+      url: 'https://www.kashingliu.cn/wechattest/show_index.php?load=0',
       data: {
       },
       header: {
@@ -76,17 +92,18 @@ Page({
   },
 
   onReachBottom: function () {
-    var latestid = this.data.currentList[9].id
+    var len = this.data.currentList.length-1
+    var latestid = this.data.currentList[len].id
     var self = this;
     wx.request({
-      url: 'http://10.236.78.197/wechattest/show_index.php?load=1&id=' + latestid,
-      data: {
-      },
+      url: 'https://www.kashingliu.cn/wechattest/show_index.php?load=1&id=' + latestid,
       header: {
         'content-type': 'application/json' // 默认值
       },
       success(res) {
-        // console.log(res)
+        // console.log()
+        console.log(self.data.currentList)
+        console.log(res)
         var result = self.data.currentList
         for (var i = 0; i < res.data.length; i++){
           result.push(res.data[i])
@@ -142,7 +159,7 @@ Page({
   onShow: function () {
     var self = this;
     wx.request({
-      url: 'http://10.236.78.197/wechattest/show_index.php?load=0',
+      url: 'https://www.kashingliu.cn/wechattest/show_index.php?load=0',
       data: {
       },
       header: {

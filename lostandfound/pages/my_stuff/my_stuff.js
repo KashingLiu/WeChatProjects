@@ -6,7 +6,53 @@ Page({
    */
   data: {
     inputShowed: false,
-    inputVal: ""
+    inputVal: "",
+    hide: true
+  },
+
+  ok: function(e) {
+    console.log(e)
+    var self = this
+    wx.showModal({
+      title: '提示',
+      content: '您确定已经对接该物品吗？',
+      success(res) {
+        if (res.confirm) {
+          var id = e.currentTarget.dataset.id
+          wx.request({
+            url: 'https://www.kashingliu.cn/wechattest/delete_stuff.php?id=' + id,
+            success(res) {
+              console.log(res)
+              self.onLoad()
+              self.onShow()
+            }
+          })
+        } else if (res.cancel) {
+        }
+      }
+    })
+  },
+
+  del: function (e) {
+    console.log(e)
+    var self = this
+    wx.showModal({
+      title: '提示',
+      content: '您确定要删除吗？',
+      success(res) {
+        if (res.confirm) {
+          var id = e.currentTarget.dataset.id
+          wx.request({
+            url: 'https://www.kashingliu.cn/wechattest/delete_stuff.php?id=' + id,
+            success(res) {
+              console.log(res)
+              self.onLoad()
+            }
+          })
+        } else if (res.cancel) {
+        }
+      }
+    })
   },
 
   showInput: function () {
@@ -25,7 +71,7 @@ Page({
   search: function (e) {
     var self = this;
     wx.request({
-      url: 'http://10.236.78.197/wechattest/my_stuff.php?search=1&openid=' + getApp().globalData.openid +'&query=' + this.data.inputVal,
+      url: 'https://www.kashingliu.cn/wechattest/my_stuff.php?search=1&openid=' + getApp().globalData.openid +'&query=' + this.data.inputVal,
       data: {
         // search: 1,
         // openid: getApp().globalData.openid,
@@ -45,7 +91,8 @@ Page({
 
   detailTap: function (e) {
     var detail = e.currentTarget.dataset.anchorobj
-    if (detail.ifidcard == 1 || detail.img[0] == "/images/ava.png") {
+    console.log(detail)
+    if (detail.ifidcard == 1 || detail.img[0] == "/images/ava.png" || detail.img[0] == "/images/lost.png") {
       detail.display = false
     } else {
       detail.display = true
@@ -65,9 +112,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var self = this;
+    var self = this
+    wx.showLoading({
+      title: '加载中',
+      success(res) {
+        self.setData({
+          hide: true
+        })
+      }
+    })
+
+    
     wx.request({
-      url: 'http://10.236.78.197/wechattest/my_stuff.php?search=0&openid=' + getApp().globalData.openid,
+      url: 'https://www.kashingliu.cn/wechattest/my_stuff.php?search=0&openid=' + getApp().globalData.openid,
       data: {
         // search: 0
       },
@@ -80,6 +137,12 @@ Page({
         self.setData({
           currentList: res.data,
         })
+        setTimeout(function () {
+          wx.hideLoading()
+          self.setData({
+            hide: false
+          })
+        }, 2000)
 
       },
       fail(res) {
@@ -99,7 +162,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var self = this
   },
 
   /**

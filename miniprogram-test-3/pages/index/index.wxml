@@ -1,0 +1,7 @@
+<button bindtap="showDialog">点击显示</button>
+<modal id='modal' 
+    modalTitle='这里是标题' 
+    modalMsg='我是内容' 
+    bind:cancelEvent="_cancelEvent"  
+    bind:confirmEvent="_confirmEvent">
+</modal>

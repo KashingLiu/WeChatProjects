@@ -13,7 +13,7 @@ Page({
     console.log(e.detail.value.pwd)
     var time = this.addJYM();
     wx.request({
-      url: "http://10.236.78.197/wechattest/login.php",
+      url: "https://www.kashingliu.cn/wechattest/login.php",
       data: {
         stuid: e.detail.value.stuid,
         pwd: e.detail.value.pwd,

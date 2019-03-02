@@ -1,6 +1,6 @@
 <import src="/pages/my_stuff/anchorTemplate/anchor.wxml"/>
 
-<view class="container">
+<view wx:if='{{!hide}}' class="container" >
   <!-- <scroll-view 
     bindscrolltolower="bindDownLoad" 
     bindscrolltoupper="topLoad"

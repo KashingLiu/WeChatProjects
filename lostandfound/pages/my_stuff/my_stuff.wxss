@@ -1,4 +1,4 @@
-@import "anchorTemplate/anchor.wxss";
+@import "/pages/my_stuff/anchorTemplate/anchor.wxss";
 page{
   background-color: #F8F8F8;
   /* background-color: black; */
@@ -93,3 +93,11 @@ page{
   height: 0;
   color: transparent;
 }
+
+
+.list1 {
+height: 100%;
+width: 100%;
+}
+
+.weui-icon-clear{position:absolute;top:0;right:0;padding:7px 8px;font-size:0}

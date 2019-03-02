@@ -9,6 +9,18 @@ Page({
     userInfo: null
   },
 
+  about: function () {
+    wx.navigateTo({
+      url: '/pages/about/about',
+    })
+  },
+
+  mine: function () {
+    wx.navigateTo({
+      url: this.data.broadcasturl,
+    })
+  },
+
   onLoad: function (options) {
     console.log('onload')
     console.log(getApp().globalData.userInfo)
@@ -31,7 +43,7 @@ Page({
           // 或者可以直接使用微信的提供的接口直接获取 openid ，方法如下：
           wx.request({
             // 自行补上自己的 APPID 和 SECRET
-            url: 'http://10.236.78.197/wechattest/get_userinfo.php?code=' + res.code,
+            url: 'https://www.kashingliu.cn/wechattest/get_userinfo.php?code=' + res.code,
             success: res => {
               console.log(res)      //ok
               if(res.data.flag == 0) {
@@ -74,7 +86,7 @@ Page({
             // 或者可以直接使用微信的提供的接口直接获取 openid ，方法如下：
             wx.request({
               // 自行补上自己的 APPID 和 SECRET
-              url: "https://api.weixin.qq.com/sns/jscode2session?appid=wx0a897809c58f2c45&secret=86a260ab14cdcd729584ffc9b4d54ba1&js_code="+res.code+"&grant_type=authorization_code",
+              url: 'https://www.kashingliu.cn/wechattest/get_userinfo.php?code=' + res.code,
               success: res => {
                 getApp().globalData.openid =res.data.openid      //ok
               }
